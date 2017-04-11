@@ -12,8 +12,6 @@ public interface SyntheticDOM {
 
     public DOM dom();
 
-//     public void bind(SyntheticDOMBinding binding);
-
     public ActionExecuter actions();
 
     /**
@@ -25,7 +23,9 @@ public interface SyntheticDOM {
                                                   final Getter<T> getter);
 
 
-    public void addChangeListener(UIUpdaterListener listener);
+    public void addChangeListener( final UIUpdaterListener listener);
 
-    public <V> V get( Enum key );
+    public <V> V get( final Enum key );
+
+    public void unbind();
 }

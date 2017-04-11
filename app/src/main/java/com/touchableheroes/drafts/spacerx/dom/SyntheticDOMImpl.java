@@ -65,6 +65,14 @@ public class SyntheticDOMImpl
     }
 
     @Override
+    public void unbind() {
+        this.listeners.clear();;
+        this.getter.clear();
+
+        dom.removeListener( this );
+    }
+
+    @Override
     public void changed(final Map<Enum, Serializable> changedMap) {
         for( final UIUpdaterListener listener :  this.listeners ) {
             listener.changed( changedMap );

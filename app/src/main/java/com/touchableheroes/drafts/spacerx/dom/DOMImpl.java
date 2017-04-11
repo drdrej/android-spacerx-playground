@@ -76,8 +76,12 @@ public class DOMImpl implements DOM {
 
     @Override
     public void addChangeListener(final DOMChangeListener listener) {
-
         this.listeners.add(listener);
+    }
+
+    @Override
+    public void removeListener(final DOMChangeListener listener) {
+        this.listeners.remove( listener );
     }
 
 

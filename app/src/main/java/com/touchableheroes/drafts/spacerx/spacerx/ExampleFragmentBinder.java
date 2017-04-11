@@ -26,7 +26,6 @@ public class ExampleFragmentBinder
 
     @Override
     public void bind()  {
-        //final TextView output = (TextView) view.findViewById(R.id.ExampleTextView);
         getter(ExampleAppStateKey.FORMATTED_COUNTER,
                new Getter<String>( syntheticDom() ) {
 
@@ -60,4 +59,10 @@ public class ExampleFragmentBinder
     }
 
 
+    @Override
+    public void destroy() {
+        super.destroy();
+
+
+    }
 }

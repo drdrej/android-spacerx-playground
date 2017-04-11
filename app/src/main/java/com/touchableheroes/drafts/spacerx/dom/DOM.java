@@ -15,11 +15,14 @@ public interface DOM {
 
     public StateTX transaction(final Enum... values);
 
-    public void commit(StateTX tx);
+    public void commit(final StateTX tx);
 
-    public <T extends Serializable> T get(Enum key);
+    public <T extends Serializable> T get(final Enum key);
 
-    public String rollback(StateTX tx);
+    public String rollback(final StateTX tx);
 
     public void addChangeListener(final DOMChangeListener listener);
+
+    public void removeListener(final DOMChangeListener listener);
+
 }

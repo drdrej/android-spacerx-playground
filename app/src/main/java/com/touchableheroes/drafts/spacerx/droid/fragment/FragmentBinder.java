@@ -19,11 +19,11 @@ public abstract class FragmentBinder {
 
     private final Fragment src;
 
-    public SyntheticDOM synthDom;
+    public final SyntheticDOM synthDom;
 
     public FragmentBinder(final Fragment src) {
         this.src = src;
-        this.synthDom = SyntheticDomFactory.createFor(src);;
+        this.synthDom = SyntheticDomFactory.create();;
     }
 
     protected ViewBinding bind(final int id) {
@@ -50,7 +50,7 @@ public abstract class FragmentBinder {
     public abstract void init(final Context ctx);
 
     public void destroy() {
-        ;
+        this.syntheticDom().unbind();
     }
 
 

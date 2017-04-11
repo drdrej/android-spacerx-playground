@@ -10,13 +10,8 @@ import android.support.v4.app.Fragment;
 
 public class SyntheticDomFactory {
 
-    public static void create(SyntheticDOMBinding binding) {
-
-    }
-
-    public static SyntheticDOM createFor(final Fragment fragement) {
+    public static SyntheticDOM create() {
         final DOM dom = HasDOMSupport.getDOM();
-        // appCtx = fragement.getActivity().getApplication();
 
         return new SyntheticDOMImpl( dom );
     }
