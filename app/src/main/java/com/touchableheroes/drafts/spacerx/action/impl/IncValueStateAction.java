@@ -1,8 +1,6 @@
 package com.touchableheroes.drafts.spacerx.action.impl;
 
 import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
-import com.touchableheroes.drafts.spacerx.spacerx.ExampleAppStateKey;
-import com.touchableheroes.drafts.spacerx.state.State;
 import com.touchableheroes.drafts.spacerx.tx.StateTX;
 
 import java.io.Serializable;

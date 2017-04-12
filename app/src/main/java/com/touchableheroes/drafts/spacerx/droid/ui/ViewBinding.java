@@ -1,4 +1,4 @@
-package com.touchableheroes.drafts.spacerx.droid.fragment;
+package com.touchableheroes.drafts.spacerx.droid.ui;
 
 import android.view.View;
 

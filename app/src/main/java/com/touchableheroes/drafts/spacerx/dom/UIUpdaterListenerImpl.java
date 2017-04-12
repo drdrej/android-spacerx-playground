@@ -2,7 +2,7 @@ package com.touchableheroes.drafts.spacerx.dom;
 
 import android.view.View;
 
-import com.touchableheroes.drafts.spacerx.droid.fragment.UIUpdater;
+import com.touchableheroes.drafts.spacerx.droid.ui.UIUpdater;
 
 import java.io.Serializable;
 import java.lang.ref.WeakReference;

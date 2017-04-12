@@ -1,9 +1,8 @@
-package com.touchableheroes.drafts.spacerx.spacerx;
+package com.touchableheroes.drafts.spacerx.spacerx.examples.step1;
 
 import com.touchableheroes.drafts.spacerx.action.Dependenicies;
 import com.touchableheroes.drafts.spacerx.action.StateAction;
-import com.touchableheroes.drafts.spacerx.state.Condition;
-import com.touchableheroes.drafts.spacerx.state.State;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step1.ExampleAppStateKey;
 import com.touchableheroes.drafts.spacerx.tx.StateTX;
 
 /**

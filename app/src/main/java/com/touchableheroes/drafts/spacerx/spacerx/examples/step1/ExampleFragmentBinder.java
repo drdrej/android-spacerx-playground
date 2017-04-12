@@ -1,4 +1,4 @@
-package com.touchableheroes.drafts.spacerx.spacerx;
+package com.touchableheroes.drafts.spacerx.spacerx.examples.step1;
 
 import android.content.Context;
 import android.support.v4.app.Fragment;
@@ -7,9 +7,10 @@ import android.view.View;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
-import com.touchableheroes.drafts.spacerx.droid.fragment.FragmentBinder;
-import com.touchableheroes.drafts.spacerx.droid.fragment.UIAction;
-import com.touchableheroes.drafts.spacerx.droid.fragment.UIUpdater;
+import com.touchableheroes.drafts.spacerx.droid.ui.FragmentBinder;
+import com.touchableheroes.drafts.spacerx.droid.ui.UIAction;
+import com.touchableheroes.drafts.spacerx.droid.ui.UIUpdater;
+import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 import java.io.Serializable;
 
@@ -30,7 +31,7 @@ public class ExampleFragmentBinder
                new Getter<String>( syntheticDom() ) {
 
             public String get() {
-                final Serializable realVal = syntheticDom().dom().get(ExampleAppStateKey.COUNTER);
+                final Serializable realVal = syntheticDom().get(ExampleAppStateKey.COUNTER);
                 return String.valueOf( realVal );
             }
         });

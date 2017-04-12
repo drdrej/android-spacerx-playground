@@ -1,4 +1,4 @@
-package com.touchableheroes.drafts.spacerx.spacerx;
+package com.touchableheroes.drafts.spacerx.spacerx.examples.step1;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 /**
  * A placeholder fragment containing a simple view.

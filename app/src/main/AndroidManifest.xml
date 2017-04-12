@@ -3,15 +3,15 @@
     package="com.touchableheroes.drafts.spacerx.spacerx">
 
     <application
-        android:allowBackup="true"
         android:name="com.touchableheroes.drafts.spacerx.app.DOMBasedApp"
+        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".TestActivity"
+            android:name=".examples.step1.TestActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -20,6 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".examples.step2.AllGamesListActivity"></activity>
     </application>
 
 </manifest>
