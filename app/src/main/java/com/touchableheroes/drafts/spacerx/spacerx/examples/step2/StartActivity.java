@@ -8,7 +8,7 @@ import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 public class StartActivity extends AppCompatActivity {
 
-    ActivityBinder binder;
+    private ActivityBinder binder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

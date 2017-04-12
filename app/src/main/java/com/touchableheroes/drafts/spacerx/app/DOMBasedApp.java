@@ -10,10 +10,14 @@ import com.touchableheroes.drafts.spacerx.dom.HasDOMSupport;
 
 public class DOMBasedApp extends Application {
 
+    {
+        HasDOMSupport.initDOM();
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
-        HasDOMSupport.initDOM();
+
     }
 
 
