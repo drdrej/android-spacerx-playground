@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.touchableheroes.drafts.spacerx.spacerx.examples.step1.TestActivity">
+    tools:context="com.touchableheroes.drafts.spacerx.spacerx.examples.step1.StartActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

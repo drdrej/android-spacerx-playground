@@ -8,7 +8,7 @@ import java.io.Serializable;
 /**
  * Created by asiebert on 12.04.2017.
  */
-public abstract class AsynUIUpdater<V extends View,
+public abstract class AbstractAsynUIUpdater<V extends View,
                                     S extends Serializable>
         extends UIUpdater<V,S> {
 
@@ -27,6 +27,6 @@ public abstract class AsynUIUpdater<V extends View,
         handler.postDelayed(msg, 1000);
     }
 
-    public abstract void delayed(final V view, final S val);
+    protected abstract void delayed(final V view, final S val);
 
 }

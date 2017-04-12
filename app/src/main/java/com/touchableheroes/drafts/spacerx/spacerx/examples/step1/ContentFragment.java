@@ -13,9 +13,9 @@ import com.touchableheroes.drafts.spacerx.spacerx.R;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class TestActivityFragment extends Fragment {
+public class ContentFragment extends Fragment {
 
-    public TestActivityFragment() { }
+    public ContentFragment() { }
 
     private ExampleFragmentBinder binder = new ExampleFragmentBinder(this);
 

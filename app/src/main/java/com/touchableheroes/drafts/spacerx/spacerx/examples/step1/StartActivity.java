@@ -11,7 +11,7 @@ import android.view.MenuItem;
 
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
-public class TestActivity extends AppCompatActivity {
+public class StartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
