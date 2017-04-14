@@ -18,6 +18,8 @@ public class DummyContent {
      */
     public static final List<DummyItem> ITEMS = new ArrayList<DummyItem>();
 
+
+    // TestDependency
     /**
      * A map of sample (dummy) items, by ID.
      */

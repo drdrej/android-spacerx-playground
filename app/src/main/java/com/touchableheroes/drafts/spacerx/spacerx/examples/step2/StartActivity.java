@@ -3,7 +3,7 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.touchableheroes.drafts.spacerx.droid.ui.ActivityBinder;
+import com.touchableheroes.drafts.spacerx.ui.ActivityBinder;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 public class StartActivity extends AppCompatActivity {
