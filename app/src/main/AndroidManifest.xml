@@ -22,6 +22,13 @@
         </activity>
 
         <activity android:name=".examples.step1.StartActivity"></activity>
+
+        <provider
+            android:name="com.touchableheroes.drafts.spacerx.db.AppContentProvider"
+            android:authorities="com.touchableheroes.drafts.spacerx.db.step2"
+            android:exported="false"
+            android:syncable="true"
+            />
     </application>
 
 </manifest>

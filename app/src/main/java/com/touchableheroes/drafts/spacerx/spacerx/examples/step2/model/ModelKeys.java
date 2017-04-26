@@ -1,4 +1,4 @@
-package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
+package com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model;
 
 /**
  * Created by asiebert on 12.04.2017.
