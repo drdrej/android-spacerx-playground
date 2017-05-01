@@ -1,23 +1,19 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.touchableheroes.drafts.db.cupboard.xt.loader.CupboardLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.CursorIteratorConverter;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.DBLoader;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.LoaderIDs;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 
 /**
  *
@@ -26,8 +22,11 @@ public class GameItemFragment
        extends Fragment {
 
 
+    private /* RecyclerView.Adapter */ GameItemRecyclerViewAdapter adapter;
+
+
     public GameItemFragment() {
-        ;
+        adapter = new GameItemRecyclerViewAdapter();
     }
 
     @Override
@@ -42,7 +41,7 @@ public class GameItemFragment
             Context context = view.getContext();
             RecyclerView recyclerView = (RecyclerView) view;
 
-            recyclerView.setAdapter(new GameItemRecyclerViewAdapter(DummyContent.ITEMS));
+            recyclerView.setAdapter( adapter );
         }
 
         return view;
@@ -54,13 +53,19 @@ public class GameItemFragment
         super.onAttach(context);
 
         final DBLoader tx = new DBLoader(getLoaderManager());
-        tx.load(LoaderIDs.All_GAMEZ,
-                new CupboardLoaderCallback<LoaderIDs, Object>(
-                        LoaderIDs.All_GAMEZ, context) {
+        final String[] args = null;
+
+        tx.load(ContentProviderApiContract.All_GAMEZ,
+                new CupboardLoaderCallback<ContentProviderApiContract, Object>(
+                        ContentProviderApiContract.All_GAMEZ, context, args) {
 
                     @Override
                     public void onLoadFinished(
                             final CursorIteratorConverter<Object> data) {
+
+                        updateListData( data.getCursor() );
+
+                        // set cursor in context!!
 
                         // System.out.print("!! --> DATA: " + data);
         /*
@@ -75,6 +80,14 @@ public class GameItemFragment
                         System.out.println("!! --> DATA: reset.");
                     }
                 });
+    }
+
+
+
+
+    protected void updateListData(final Cursor data) {
+        System.out.println( ">>> update cursor data in view..." );
+        adapter.updateData( new GameItemRecyclerViewAdapter.ListImpl(data) );
     }
 
 }

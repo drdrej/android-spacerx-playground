@@ -1,67 +1,28 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  *
  */
-public class GameItemRecyclerViewAdapter
-       extends RecyclerView.Adapter<GameItemRecyclerViewAdapter.ViewHolder> {
+public class StructBasedRecyclerViewAdapter
+       extends RecyclerView.Adapter<StructBasedRecyclerViewAdapter.ViewHolder> {
 
-     private CursorList<DummyItem> mValues;
+    private final List<DummyItem> mValues;
 
+    public StructBasedRecyclerViewAdapter(
+            final List<DummyItem> items) {
 
-    public static class ListImpl extends CursorList<DummyItem> {
-
-        public ListImpl(final Cursor src) {
-            super(src);
-        }
-
-        @Override
-        public DummyItem parse(Cursor cursor) {
-            return new DummyItem(
-                    String.valueOf(Math.random()),
-                    "ENTRY",
-                    "DETAILS" );
-        }
-    };
-
-/*    final CursorAdapter delegate = new CursorAdapter() {
-
-        @Override
-        public View newView(final Context context,
-                            final Cursor cursor,
-                            final ViewGroup parent) {
-            return null;
-        }
-
-        @Override
-        public void bindView(final View view,
-                             final Context context,
-                             final Cursor cursor) {
-
-        }
-    };
-*/
-
-    public GameItemRecyclerViewAdapter() {
-        mValues = new ListImpl( new NoDataCursor() );
+        mValues = items;
     }
 
     @Override
@@ -75,9 +36,7 @@ public class GameItemRecyclerViewAdapter
     }
 
     @Override
-    public void onBindViewHolder(
-            final ViewHolder holder,
-            final int position ) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
         holder.mContentView.setText(mValues.get(position).content);
@@ -90,22 +49,15 @@ public class GameItemRecyclerViewAdapter
         });
     }
 
-    public void updateData( final CursorList<DummyItem> data ) {
-        this.mValues = data;
-        this.notifyDataSetChanged();
-    }
-
     @Override
     public int getItemCount() {
         return mValues.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-
         public DummyItem mItem;
 
         public ViewHolder(View view) {

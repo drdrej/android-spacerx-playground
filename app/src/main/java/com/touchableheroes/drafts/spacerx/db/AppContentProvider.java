@@ -1,9 +1,8 @@
 package com.touchableheroes.drafts.spacerx.db;
 
-import android.content.UriMatcher;
-
-import com.touchableheroes.drafts.db.cupboard.xt.CupboardContentProvider;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.AppConfig;
+import com.touchableheroes.drafts.db.cupboard.xt.config.DbConfig;
+import com.touchableheroes.drafts.db.cupboard.xt.provider.CupboardContentProvider;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 
 /**
  * Created by asiebert on 14.04.2017.
@@ -11,9 +10,9 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.AppConfig
 public class AppContentProvider
         extends CupboardContentProvider {
 
-    public AppContentProvider() {
-        super( AppConfig.config().db() );
-    }
 
+    public AppContentProvider() {
+        super( DbConfig.from(ContentProviderApiContract.class) );
+    }
 
 }
