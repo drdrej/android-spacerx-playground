@@ -22,4 +22,14 @@
 
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
+    <Button
+        android:id="@+id/btn_add_game"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        tools:layout_editor_absoluteY="503dp"
+        tools:layout_editor_absoluteX="116dp"
+
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

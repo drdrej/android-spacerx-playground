@@ -33,8 +33,8 @@ dependencies {
 
     compile 'nl.qbusict:cupboard:2.2.0'
 
-    compile 'com.github.drdrej:drafts-db-cupboard:0.0.15'
-    compile 'com.github.drdrej:drafts-spacerx:0.0.1'
+    compile 'com.github.drdrej:drafts-db-cupboard:0.0.16'
+    compile 'com.github.drdrej:drafts-spacerx:0.0.2'
 
     // compile 'com.google.android.gms:play-services-maps:8.4.0'
     // compile 'com.avast:android-styled-dialogs:2.3.3'

@@ -9,10 +9,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,8 +26,11 @@ import java.util.List;
 public class GameItemRecyclerViewAdapter
        extends RecyclerView.Adapter<GameItemRecyclerViewAdapter.ViewHolder> {
 
-     private CursorList<DummyItem> mValues;
+    /*
+     private ConverterCursorList<GameEntityProjection> mValues;
+*/
 
+    private CursorList<DummyItem> mValues;
 
     public static class ListImpl extends CursorList<DummyItem> {
 
@@ -41,24 +46,6 @@ public class GameItemRecyclerViewAdapter
                     "DETAILS" );
         }
     };
-
-/*    final CursorAdapter delegate = new CursorAdapter() {
-
-        @Override
-        public View newView(final Context context,
-                            final Cursor cursor,
-                            final ViewGroup parent) {
-            return null;
-        }
-
-        @Override
-        public void bindView(final View view,
-                             final Context context,
-                             final Cursor cursor) {
-
-        }
-    };
-*/
 
     public GameItemRecyclerViewAdapter() {
         mValues = new ListImpl( new NoDataCursor() );
