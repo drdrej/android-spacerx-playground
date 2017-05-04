@@ -11,7 +11,7 @@ import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step1.ExampleAppStateKey;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
 import com.touchableheroes.drafts.spacerx.ui.ActivityBinder;
@@ -65,14 +65,8 @@ public class Step2StartActivity extends AppCompatActivity {
                                 final Uri insertedUri = getContentResolver().insert(insertUri, xyz);
 
                                 System.err.println( ">>> inserted uri: " + insertedUri );
-
-                                final SyntheticDOM synth = syntheticDom();
-                                synth.actions()
-                                        .exec( new IncValueStateAction(ExampleAppStateKey.LOADER_ALL_GAMEZ_COUNT) );
                             }
                         });
-
-
             }
         };
 

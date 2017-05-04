@@ -17,6 +17,7 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyCont
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +34,9 @@ public class GameItemRecyclerViewAdapter
 
     private CursorList<DummyItem> mValues;
 
-    public static class ListImpl extends CursorList<DummyItem> {
+    public static class ListImpl
+            extends CursorList<DummyItem>
+            implements Serializable {
 
         public ListImpl(final Cursor src) {
             super(src);

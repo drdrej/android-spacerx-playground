@@ -12,8 +12,12 @@ import android.view.ViewGroup;
 
 import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
+import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
+import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step1.ExampleAppStateKey;
+
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.actions.SetValueStateAction;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
 import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
@@ -40,19 +44,19 @@ public class GameItemFragment
 
         @Override
         public void bind() {
-            /*
+
             bind(R.id.gamez_list)
-                    .value( ExampleAppStateKey.LOADER_ALL_GAMEZ_COUNT )
+                    .value( Step2AppStateKey.GAMEZ )
                     .updater(new UIUpdater() {
 
                         @Override
                         public void update(final View view,
-                                           final Serializable serializable) {
-
-
+                                           final Serializable data) {
+                            // updateListData( (Cursor) data );
+                            adapter.updateData( (GameItemRecyclerViewAdapter.ListImpl) data );
                         }
                     });
-                    */
+
         }
 
         @Override
@@ -105,7 +109,9 @@ public class GameItemFragment
                     @Override
                     public void onLoadFinished(
                             final Object data) {
-                        updateListData( (Cursor) data );
+                        binder.syntheticDom().actions()
+                                .exec( new SetValueStateAction(Step2AppStateKey.GAMEZ,
+                                           new GameItemRecyclerViewAdapter.ListImpl( (Cursor) data )) );
                     }
 
                 });
