@@ -20,10 +20,10 @@ import java.io.Serializable;
  *
  * bound to<. R.layout.fragment_game_item
  */
-public class ExampleFragmentBinder
+public class Step2FragmentBinder
         extends FragmentBinder {
 
-    public ExampleFragmentBinder(final Fragment src) {
+    public Step2FragmentBinder(final Fragment src) {
         super(src);
     }
 

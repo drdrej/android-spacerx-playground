@@ -21,7 +21,7 @@ import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
 
 import java.io.Serializable;
 
-public class StartActivity extends AppCompatActivity {
+public class Step2StartActivity extends AppCompatActivity {
 
     private ActivityBinder binder;
 
@@ -96,7 +96,7 @@ FATAL EXCEPTION: main
         Process: com.touchableheroes.drafts.spacerx.spacerx, PID: 18055
         java.lang.IllegalArgumentException: Unknown URL content://com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract/All_GAMEZ
         at android.content.ContentResolver.insert(ContentResolver.java:1203)
-        at com.touchableheroes.drafts.spacerx.spacerx.examples.step2.StartActivity$1$1.action(StartActivity.java:65)
+        at com.touchableheroes.drafts.spacerx.spacerx.examples.step2.Step2StartActivity$1$1.action(Step2StartActivity.java:65)
         at com.touchableheroes.drafts.spacerx.ui.ViewBinding$1.onClick(ViewBinding.java:35)
         at android.view.View.performClick(View.java:4780)
         at android.view.View$PerformClick.run(View.java:19866)

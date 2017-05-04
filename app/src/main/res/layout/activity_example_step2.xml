@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    tools:context="com.touchableheroes.drafts.spacerx.spacerx.examples.step2.StartActivity">
+    tools:context="com.touchableheroes.drafts.spacerx.spacerx.examples.step2.Step2StartActivity">
 
 
     <fragment

@@ -28,6 +28,8 @@ public class GameItemFragment
 
     private GameItemRecyclerViewAdapter adapter;
 
+    private SimpleContractLoader loaderMgr;
+
 
     class Binder extends FragmentBinder {
         public Binder(final Fragment src) {
@@ -82,11 +84,14 @@ public class GameItemFragment
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        final SimpleContractLoader tx = new SimpleContractLoader(getLoaderManager());
+        this.loaderMgr = new SimpleContractLoader(getLoaderManager(), context);
+
         final String[] args = null;
 
-        tx.load( new ContractLoaderCallback(
-                        ContentProviderApiContract.All_GAMEZ, context, args) {
+        loaderMgr.load(
+                new ContractLoaderCallback(
+                        ContentProviderApiContract.All_GAMEZ,
+                        args) {
 
                     @Override
                     public void onLoadFinished(
@@ -94,15 +99,8 @@ public class GameItemFragment
                         updateListData( (Cursor) data );
                     }
 
-                    // TODO: wrapper method leer impl, damit man den code sauber halten kann.
-                    @Override
-                    public void onLoaderReset() {
-                        System.out.println("!! --> DATA: reset.");
-                    }
                 });
     }
-
-
 
 
     protected void updateListData(final Cursor data) {
