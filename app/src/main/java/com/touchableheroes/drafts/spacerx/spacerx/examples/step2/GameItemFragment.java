@@ -9,9 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.touchableheroes.drafts.db.cupboard.xt.loader.CupboardLoaderCallback;
-import com.touchableheroes.drafts.db.cupboard.xt.loader.CursorIteratorConverter;
-import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.DBLoader;
+import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
+import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step1.ExampleAppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
@@ -83,19 +82,19 @@ public class GameItemFragment
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        final DBLoader tx = new DBLoader(getLoaderManager());
+        final SimpleContractLoader tx = new SimpleContractLoader(getLoaderManager());
         final String[] args = null;
 
-        tx.load( ContentProviderApiContract.All_GAMEZ,
-                new CupboardLoaderCallback<ContentProviderApiContract, Object>(
+        tx.load( new ContractLoaderCallback(
                         ContentProviderApiContract.All_GAMEZ, context, args) {
 
                     @Override
                     public void onLoadFinished(
-                            final CursorIteratorConverter<Object> data) {
-                        updateListData( data.getCursor() );
+                            final Object data) {
+                        updateListData( (Cursor) data );
                     }
 
+                    // TODO: wrapper method leer impl, damit man den code sauber halten kann.
                     @Override
                     public void onLoaderReset() {
                         System.out.println("!! --> DATA: reset.");
