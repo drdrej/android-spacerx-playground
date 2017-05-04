@@ -61,12 +61,14 @@ public class StartActivity extends AppCompatActivity {
 
                                 final Uri insertUri = ContractUriUtil.createInsert(ContentProviderApiContract.All_GAMEZ);
 
-                                ContentValues xyz = ContentValuesUtil.entityToContentValues(new GameEntity());
-                                getContentResolver().insert( insertUri, xyz);
+                                final ContentValues xyz = ContentValuesUtil.entityToContentValues(new GameEntity());
+                                final Uri insertedUri = getContentResolver().insert(insertUri, xyz);
+
+                                System.err.println( ">>> inserted uri: " + insertedUri );
 
                                 final SyntheticDOM synth = syntheticDom();
                                 synth.actions()
-                                        .exec( new IncValueStateAction(ExampleAppStateKey.COUNTER) );
+                                        .exec( new IncValueStateAction(ExampleAppStateKey.LOADER_ALL_GAMEZ_COUNT) );
                             }
                         });
 

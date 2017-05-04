@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-    android:id="@+id/list"
+    android:id="@+id/gamez_list"
 
     android:name="com.touchableheroes.drafts.spacerx.spacerx.examples.step2.GameItemFragment"
 

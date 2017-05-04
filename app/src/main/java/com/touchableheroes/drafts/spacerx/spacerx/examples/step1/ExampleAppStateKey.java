@@ -7,7 +7,11 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step1;
 public enum ExampleAppStateKey {
 
     COUNTER,
+
     FORMATTED_COUNTER,
+
+    LOADER_ALL_GAMEZ_COUNT,
+
     USERS
 
 }

@@ -13,7 +13,12 @@ import com.touchableheroes.drafts.db.cupboard.xt.loader.CupboardLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.CursorIteratorConverter;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.DBLoader;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step1.ExampleAppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
+import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
+import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
+
+import java.io.Serializable;
 
 /**
  *
@@ -22,11 +27,38 @@ public class GameItemFragment
        extends Fragment {
 
 
-    private /* RecyclerView.Adapter */ GameItemRecyclerViewAdapter adapter;
+    private GameItemRecyclerViewAdapter adapter;
 
+
+    class Binder extends FragmentBinder {
+        public Binder(final Fragment src) {
+            super(src);
+        }
+
+        @Override
+        public void bind() {
+            bind(R.id.content)
+                    .value( ExampleAppStateKey.LOADER_ALL_GAMEZ_COUNT )
+                    .updater(new UIUpdater() {
+
+                        @Override
+                        public void update(final View view,
+                                           final Serializable serializable) {
+
+
+                        }
+                    });
+        }
+
+        @Override
+        public void init(final Context context) {
+            ;
+        }
+    };
 
     public GameItemFragment() {
         adapter = new GameItemRecyclerViewAdapter();
+
     }
 
     @Override
@@ -47,7 +79,6 @@ public class GameItemFragment
         return view;
     }
 
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -55,24 +86,14 @@ public class GameItemFragment
         final DBLoader tx = new DBLoader(getLoaderManager());
         final String[] args = null;
 
-        tx.load(ContentProviderApiContract.All_GAMEZ,
+        tx.load( ContentProviderApiContract.All_GAMEZ,
                 new CupboardLoaderCallback<ContentProviderApiContract, Object>(
                         ContentProviderApiContract.All_GAMEZ, context, args) {
 
                     @Override
                     public void onLoadFinished(
                             final CursorIteratorConverter<Object> data) {
-
                         updateListData( data.getCursor() );
-
-                        // set cursor in context!!
-
-                        // System.out.print("!! --> DATA: " + data);
-        /*
-                        Toast.makeText(getActivity(), "[!] Track loaded! ", Toast.LENGTH_SHORT );
-
-                        getListAdapter().swapCursor(data.getCursor());
-                        */
                     }
 
                     @Override
