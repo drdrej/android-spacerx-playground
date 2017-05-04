@@ -3,6 +3,7 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 import android.content.Context;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -26,7 +27,8 @@ public class GameItemFragment
        extends Fragment {
 
 
-    private GameItemRecyclerViewAdapter adapter;
+    private final Binder binder;
+    private final GameItemRecyclerViewAdapter adapter;
 
     private SimpleContractLoader loaderMgr;
 
@@ -38,7 +40,8 @@ public class GameItemFragment
 
         @Override
         public void bind() {
-            bind(R.id.content)
+            /*
+            bind(R.id.gamez_list)
                     .value( ExampleAppStateKey.LOADER_ALL_GAMEZ_COUNT )
                     .updater(new UIUpdater() {
 
@@ -49,6 +52,7 @@ public class GameItemFragment
 
                         }
                     });
+                    */
         }
 
         @Override
@@ -59,7 +63,7 @@ public class GameItemFragment
 
     public GameItemFragment() {
         adapter = new GameItemRecyclerViewAdapter();
-
+        binder = new Binder(this);
     }
 
     @Override
@@ -81,10 +85,15 @@ public class GameItemFragment
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onViewCreated(
+            final View view, @Nullable
+            final Bundle savedInstanceState) {
 
-        this.loaderMgr = new SimpleContractLoader(getLoaderManager(), context);
+        super.onViewCreated(view, savedInstanceState);
+
+        this.loaderMgr = new SimpleContractLoader(
+                getLoaderManager(),
+                this.getContext());
 
         final String[] args = null;
 
@@ -100,8 +109,9 @@ public class GameItemFragment
                     }
 
                 });
-    }
 
+        binder.bind();
+    }
 
     protected void updateListData(final Cursor data) {
         System.out.println( ">>> update cursor data in view..." );
