@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
+import com.touchableheroes.drafts.db.cupboard.xt.cursor.CursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;

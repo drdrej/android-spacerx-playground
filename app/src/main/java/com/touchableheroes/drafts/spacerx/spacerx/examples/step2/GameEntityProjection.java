@@ -5,4 +5,5 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
  */
 
 enum GameEntityProjection {
+
 }
