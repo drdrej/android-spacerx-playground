@@ -67,9 +67,13 @@ public class GameItemRecyclerViewAdapter
         // holder.mItem = mValues.get(position);
         holder.mItem = mValues.get(position);
 
-        holder.mIdView.setText( String.valueOf( holder.mItem.get(GameEntityProjection._id )) );
-        holder.mContentView.setText( String.valueOf( holder.mItem.get(GameEntityProjection.name)) );
+        final String id =  String.valueOf( holder.mItem.get(GameEntityProjection._id ));
+        holder.mIdView.setText( id );
 
+        final String name = String.valueOf( holder.mItem.get(GameEntityProjection.name));
+        holder.mContentView.setText( name );
+
+        System.err.println( ">>> ID: " + id + " -> " + name );
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
