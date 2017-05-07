@@ -1,8 +1,5 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 
-import android.content.Context;
-import android.database.Cursor;
-import android.support.v4.widget.CursorAdapter;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +8,13 @@ import android.widget.TextView;
 
 import com.touchableheroes.drafts.core.logger.Fact;
 import com.touchableheroes.drafts.core.logger.Tracer;
+import com.touchableheroes.drafts.core.obj.Structure;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.CursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
 
 /**
  *
@@ -30,12 +22,11 @@ import java.util.List;
 public class GameItemRecyclerViewAdapter
        extends RecyclerView.Adapter<GameItemRecyclerViewAdapter.ViewHolder> {
 
+    private ConverterCursorList<GameEntityProjection> mValues;
+
+    // private CursorList<DummyItem> mValues;
+
     /*
-     private ConverterCursorList<GameEntityProjection> mValues;
-*/
-
-    private CursorList<DummyItem> mValues;
-
     public static class ListImpl
             extends CursorList<DummyItem>
             implements Serializable {
@@ -52,9 +43,11 @@ public class GameItemRecyclerViewAdapter
                     "DETAILS" );
         }
     };
+    */
 
     public GameItemRecyclerViewAdapter() {
-        mValues = new ListImpl( new NoDataCursor() );
+        mValues = new ConverterCursorList<GameEntityProjection>( new NoDataCursor(), GameEntityProjection.class );
+        // mValues = new ListImpl( new NoDataCursor() );
     }
 
     @Override
@@ -71,9 +64,11 @@ public class GameItemRecyclerViewAdapter
     public void onBindViewHolder(
             final ViewHolder holder,
             final int position ) {
+        // holder.mItem = mValues.get(position);
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+
+        holder.mIdView.setText( String.valueOf( holder.mItem.get(GameEntityProjection._id )) );
+        holder.mContentView.setText( String.valueOf( holder.mItem.get(GameEntityProjection.name)) );
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +78,7 @@ public class GameItemRecyclerViewAdapter
         });
     }
 
-    public void updateData( final CursorList<DummyItem> data ) {
+    public void updateData( final ConverterCursorList<GameEntityProjection> data ) {
         this.mValues = data;
 
         Tracer.prove(new Fact() {
@@ -109,7 +104,7 @@ public class GameItemRecyclerViewAdapter
         public final TextView mIdView;
         public final TextView mContentView;
 
-        public DummyItem mItem;
+        public Structure<GameEntityProjection> mItem;
 
         public ViewHolder(View view) {
             super(view);

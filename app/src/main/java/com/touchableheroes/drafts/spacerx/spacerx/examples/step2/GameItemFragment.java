@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
@@ -20,6 +21,7 @@ import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.actions.SetValueStateAction;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
 import com.touchableheroes.drafts.spacerx.tx.Remove;
 import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
 import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
@@ -59,10 +61,8 @@ public class GameItemFragment
                             // updateListData( (Cursor) data );
 
                             if( data != null
-                                && !(data instanceof Remove)
-                                && (data instanceof GameItemRecyclerViewAdapter.ListImpl) ) {
-
-                                adapter.updateData( (GameItemRecyclerViewAdapter.ListImpl) data );
+                                && !(data instanceof Remove)) {
+                                adapter.updateData( (ConverterCursorList<GameEntityProjection>) data );
                             }
                         }
                     });
@@ -86,6 +86,12 @@ public class GameItemFragment
             ;
         }
     };
+
+    /*
+    TODO : Converter muss getestet werden, es wird nicht der gewünschte wert aus dem cursor geliefert.
+    vllt mit move next falsch impl?
+    Prüfen, warum darstellung der liste in ui leer ist.
+    */
 
     public GameItemFragment() {
         adapter = new GameItemRecyclerViewAdapter();
@@ -132,9 +138,14 @@ public class GameItemFragment
                     @Override
                     public void onLoadFinished(
                             final Object data) {
+                        final ConverterCursorList<GameEntityProjection> cursorList = new ConverterCursorList<>(
+                                (Cursor) data,
+                                GameEntityProjection.class);
+
                         binder.syntheticDom().actions()
-                                .exec( new SetValueStateAction(Step2AppStateKey.GAMEZ,
-                                           new GameItemRecyclerViewAdapter.ListImpl( (Cursor) data )) );
+                                .exec( new SetValueStateAction(
+                                        Step2AppStateKey.GAMEZ,
+                                        cursorList) );
                     }
 
                 });

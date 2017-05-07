@@ -65,7 +65,11 @@ public class Step2StartActivity extends AppCompatActivity {
 
                                 final Uri insertUri = ContractUriUtil.createInsert(ContentProviderApiContract.All_GAMEZ);
 
-                                final ContentValues xyz = ContentValuesUtil.entityToContentValues(new GameEntity());
+                                final GameEntity entity = new GameEntity();
+                                entity._id = System.currentTimeMillis();
+                                entity.name = "TEST_ENTRY";
+
+                                final ContentValues xyz = ContentValuesUtil.entityToContentValues( entity );
                                 final Uri insertedUri = getContentResolver().insert(insertUri, xyz);
 
                                 System.err.println( ">>> inserted uri: " + insertedUri );
