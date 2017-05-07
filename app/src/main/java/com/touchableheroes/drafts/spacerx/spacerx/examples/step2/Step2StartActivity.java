@@ -8,18 +8,22 @@ import android.view.View;
 
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
+import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
+import com.touchableheroes.drafts.spacerx.tx.StateTX;
 import com.touchableheroes.drafts.spacerx.ui.ActivityBinder;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.ui.UIAction;
 import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Step2StartActivity extends AppCompatActivity {
 
@@ -65,6 +69,15 @@ public class Step2StartActivity extends AppCompatActivity {
                                 final Uri insertedUri = getContentResolver().insert(insertUri, xyz);
 
                                 System.err.println( ">>> inserted uri: " + insertedUri );
+
+                                syntheticDom().actions().exec(new AbstractStateAction() {
+
+                                    @Override
+                                    public void exec(StateTX tx) {
+                                        tx.remove(Step2AppStateKey.GAMEZ);
+                                    }
+
+                                });
                             }
                         });
             }

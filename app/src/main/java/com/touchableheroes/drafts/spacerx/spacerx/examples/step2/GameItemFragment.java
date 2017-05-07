@@ -14,15 +14,18 @@ import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
+import com.touchableheroes.drafts.spacerx.dom.listener.DOMChangeListener;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.actions.SetValueStateAction;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
+import com.touchableheroes.drafts.spacerx.tx.Remove;
 import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
 import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
 
 import java.io.Serializable;
+import java.util.Map;
 
 /**
  *
@@ -45,6 +48,7 @@ public class GameItemFragment
         @Override
         public void bind() {
 
+
             bind(R.id.gamez_list)
                     .value( Step2AppStateKey.GAMEZ )
                     .updater(new UIUpdater() {
@@ -54,6 +58,19 @@ public class GameItemFragment
                                            final Serializable data) {
                             // updateListData( (Cursor) data );
                             adapter.updateData( (GameItemRecyclerViewAdapter.ListImpl) data );
+                        }
+                    });
+
+            onChange( Step2AppStateKey.GAMEZ )
+                    .ifOneOf(new DOMChangeListener() {
+
+                        @Override
+                        public void changed(final Map<Enum, Serializable> map) {
+                            final Serializable gamez = map.get(Step2AppStateKey.GAMEZ);
+
+                            if( gamez instanceof Remove ) {
+                                loaderMgr.reload( ContentProviderApiContract.All_GAMEZ );
+                            }
                         }
                     });
 
@@ -97,7 +114,8 @@ public class GameItemFragment
 
         this.loaderMgr = new SimpleContractLoader(
                 getLoaderManager(),
-                this.getContext());
+                this.getContext(),
+                ContentProviderApiContract.class );
 
         final String[] args = null;
 
@@ -119,9 +137,5 @@ public class GameItemFragment
         binder.bind();
     }
 
-    protected void updateListData(final Cursor data) {
-        System.out.println( ">>> update cursor data in view..." );
-        adapter.updateData( new GameItemRecyclerViewAdapter.ListImpl(data) );
-    }
 
 }
