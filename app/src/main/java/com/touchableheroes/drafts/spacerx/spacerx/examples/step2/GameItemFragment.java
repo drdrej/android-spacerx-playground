@@ -57,7 +57,13 @@ public class GameItemFragment
                         public void update(final View view,
                                            final Serializable data) {
                             // updateListData( (Cursor) data );
-                            adapter.updateData( (GameItemRecyclerViewAdapter.ListImpl) data );
+
+                            if( data != null
+                                && !(data instanceof Remove)
+                                && (data instanceof GameItemRecyclerViewAdapter.ListImpl) ) {
+
+                                adapter.updateData( (GameItemRecyclerViewAdapter.ListImpl) data );
+                            }
                         }
                     });
 
@@ -73,7 +79,6 @@ public class GameItemFragment
                             }
                         }
                     });
-
         }
 
         @Override

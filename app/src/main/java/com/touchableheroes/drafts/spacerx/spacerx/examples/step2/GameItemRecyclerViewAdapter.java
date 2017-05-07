@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.touchableheroes.drafts.core.logger.Fact;
+import com.touchableheroes.drafts.core.logger.Tracer;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.CursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
@@ -83,6 +85,16 @@ public class GameItemRecyclerViewAdapter
 
     public void updateData( final CursorList<DummyItem> data ) {
         this.mValues = data;
+
+        Tracer.prove(new Fact() {
+            @Override
+            public void check() {
+                if( data == null ) {
+                    throw new IllegalStateException( "parameter:data is NULL. not supported parameter-value." );
+                }
+            }
+        });
+
         this.notifyDataSetChanged();
     }
 
