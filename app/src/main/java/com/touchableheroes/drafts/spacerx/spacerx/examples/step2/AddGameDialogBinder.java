@@ -27,7 +27,7 @@ public class AddGameDialogBinder extends DialogBinder {
 
     @Override
     protected View view() {
-        return dialog().findViewById( R.id.root_dialog );
+        return owner().findViewById( R.id.root_dialog );
     }
 
     @Override
@@ -46,7 +46,7 @@ public class AddGameDialogBinder extends DialogBinder {
                         entity.name = "TEST_ENTRY";
 
                         final ContentValues xyz = ContentValuesUtil.entityToContentValues( entity );
-                        final Uri insertedUri = dialog().getContext().getContentResolver().insert(insertUri, xyz);
+                        final Uri insertedUri = owner().getContext().getContentResolver().insert(insertUri, xyz);
 
                         syntheticDom().actions().exec(new AbstractStateAction() {
 
@@ -57,7 +57,7 @@ public class AddGameDialogBinder extends DialogBinder {
 
                         });
 
-                        dialog().dismiss();
+                        owner().dismiss();
                     }
                 });
 

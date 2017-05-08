@@ -22,30 +22,8 @@ public class GameItemRecyclerViewAdapter
 
     private ConverterCursorList<GameEntityProjection> mValues;
 
-    // private CursorList<DummyItem> mValues;
-
-    /*
-    public static class ListImpl
-            extends CursorList<DummyItem>
-            implements Serializable {
-
-        public ListImpl(final Cursor src) {
-            super(src);
-        }
-
-        @Override
-        public DummyItem parse(Cursor cursor) {
-            return new DummyItem(
-                    String.valueOf(Math.random()),
-                    "ENTRY",
-                    "DETAILS" );
-        }
-    };
-    */
-
     public GameItemRecyclerViewAdapter() {
         mValues = new ConverterCursorList<GameEntityProjection>( new NoDataCursor(), GameEntityProjection.class );
-        // mValues = new ListImpl( new NoDataCursor() );
     }
 
     @Override
@@ -62,7 +40,6 @@ public class GameItemRecyclerViewAdapter
     public void onBindViewHolder(
             final ViewHolder holder,
             final int position ) {
-        // holder.mItem = mValues.get(position);
         holder.mItem = mValues.get(position);
 
         final String id =  String.valueOf( holder.mItem.get(GameEntityProjection._id ));

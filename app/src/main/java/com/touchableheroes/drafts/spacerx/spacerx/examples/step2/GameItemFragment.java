@@ -33,21 +33,22 @@ import java.util.Map;
 public class GameItemFragment
        extends Fragment {
 
-
     private final Binder binder;
-    private final GameItemRecyclerViewAdapter adapter;
 
-    private SimpleContractLoader loaderMgr;
+    public final GameItemRecyclerViewAdapter adapter;
+
+    public SimpleContractLoader loaderMgr;
 
 
-    class Binder extends FragmentBinder {
+   public static class Binder
+           extends FragmentBinder {
+
         public Binder(final Fragment src) {
             super(src);
         }
 
         @Override
         public void bind() {
-
 
             bind(R.id.gamez_list)
                     .value( Step2AppStateKey.GAMEZ )
@@ -60,7 +61,7 @@ public class GameItemFragment
 
                             if( data != null
                                 && !(data instanceof Remove)) {
-                                adapter.updateData( (ConverterCursorList<GameEntityProjection>) data );
+                                ((GameItemFragment) owner()).adapter.updateData( (ConverterCursorList<GameEntityProjection>) data );
                             }
                         }
                     });
@@ -73,7 +74,7 @@ public class GameItemFragment
                             final Serializable gamez = map.get(Step2AppStateKey.GAMEZ);
 
                             if( gamez instanceof Remove ) {
-                                loaderMgr.reload( ContentProviderApiContract.All_GAMEZ );
+                                ((GameItemFragment) owner()).loaderMgr.reload( ContentProviderApiContract.All_GAMEZ );
                             }
                         }
                     });
@@ -84,12 +85,6 @@ public class GameItemFragment
             ;
         }
     };
-
-    /*
-    TODO : Converter muss getestet werden, es wird nicht der gewünschte wert aus dem cursor geliefert.
-    vllt mit move next falsch impl?
-    Prüfen, warum darstellung der liste in ui leer ist.
-    */
 
     public GameItemFragment() {
         adapter = new GameItemRecyclerViewAdapter();
