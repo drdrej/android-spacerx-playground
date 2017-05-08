@@ -131,6 +131,7 @@ public class GameItemFragment
                     @Override
                     public void onLoadFinished(
                             final Object data) {
+
                         final ConverterCursorList<GameEntityProjection> cursorList = new ConverterCursorList<>(
                                 (Cursor) data,
                                 GameEntityProjection.class);
@@ -140,7 +141,6 @@ public class GameItemFragment
                                         Step2AppStateKey.GAMEZ,
                                         cursorList) );
                     }
-
                 });
 
         binder.bind();

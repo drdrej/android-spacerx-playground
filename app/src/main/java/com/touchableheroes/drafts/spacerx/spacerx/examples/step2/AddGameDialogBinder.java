@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
@@ -41,9 +43,12 @@ public class AddGameDialogBinder extends DialogBinder {
 
                         final Uri insertUri = ContractUriUtil.createInsert(ContentProviderApiContract.All_GAMEZ);
 
+                        final EditText textView = (EditText) owner()
+                                                        .findViewById(R.id.input_txt_game_name);
+
                         final GameEntity entity = new GameEntity();
                         entity._id = System.currentTimeMillis();
-                        entity.name = "TEST_ENTRY";
+                        entity.name = textView.getText().toString();
 
                         final ContentValues xyz = ContentValuesUtil.entityToContentValues( entity );
                         final Uri insertedUri = owner().getContext().getContentResolver().insert(insertUri, xyz);
