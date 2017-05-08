@@ -10,11 +10,9 @@ import com.touchableheroes.drafts.core.logger.Fact;
 import com.touchableheroes.drafts.core.logger.Tracer;
 import com.touchableheroes.drafts.core.obj.Structure;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
-import com.touchableheroes.drafts.db.cupboard.xt.cursor.CursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent.DummyItem;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.projections.GameEntityProjection;
 
 /**
  *

@@ -1,4 +1,4 @@
-package com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity;
+package com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.entities;
 
 import com.touchableheroes.drafts.db.cupboard.xt.contracts.types.Entity;
 

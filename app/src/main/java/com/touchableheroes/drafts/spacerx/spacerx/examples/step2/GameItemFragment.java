@@ -18,8 +18,8 @@ import com.touchableheroes.drafts.spacerx.dom.listener.DOMChangeListener;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.projections.GameEntityProjection;
 import com.touchableheroes.drafts.spacerx.tx.Remove;
 import com.touchableheroes.drafts.spacerx.ui.binding.FragmentBinder;
 import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;

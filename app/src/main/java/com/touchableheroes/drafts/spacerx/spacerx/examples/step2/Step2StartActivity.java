@@ -1,32 +1,18 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 
-import android.app.Dialog;
-import android.content.ContentValues;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBasedDeleteCommand;
-import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
-import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
 import com.touchableheroes.drafts.spacerx.action.impl.RemoveValue;
-import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
-import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyContent;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
-import com.touchableheroes.drafts.spacerx.tx.StateTX;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.ui.DialogUtil;
 import com.touchableheroes.drafts.spacerx.ui.binding.ActivityBinder;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.ui.binding.action.UIAction;
-import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;
-
-import java.io.Serializable;
-import java.util.List;
 
 public class Step2StartActivity extends AppCompatActivity {
 

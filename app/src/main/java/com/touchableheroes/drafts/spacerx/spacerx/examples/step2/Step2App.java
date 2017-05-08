@@ -3,7 +3,7 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 import android.app.Application;
 
 import com.touchableheroes.drafts.db.cupboard.xt.provider.CupboardSQLiteDBHelper;
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
+import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract;
 
 
 /**
