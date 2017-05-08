@@ -133,52 +133,10 @@ public class DialogUtil {
 
             return this;
         }
-
-        public DialogBuilder on() {
-            // final EditText txt = (EditText) dialog.findViewById(R.id.input_txt_game_name);
-
-            /*
-            final Button dialogButton = (Button) dialog.findViewById(R.id.input_btn_ok);
-
-            dialogButton.setOnClickListener(
-                    new View.OnClickListener() {
-
-                @Override
-                public void onClick(final View view) {
-                    final String text = txt.getText().toString();
-
-                    dialog.dismiss();
-                }
-            });
-            */
-
-            return this;
-        }
     }
 
     public static DialogBuilder create(final Context ctx) {
         return new DialogBuilder(ctx);
-
-               /*
-        dialogR.layout.custom);
-
-        // set the custom dialog components - text, image and button
-        TextView text = (TextView) dialog.findViewById(R.id.text);
-        text.setText("Android custom dialog example!");
-        ImageView image = (ImageView) dialog.findViewById(R.id.image);
-        image.setImageResource(R.drawable.ic_launcher);
-
-        Button dialogButton = (Button) dialog.findViewById(R.id.dialogButtonOK);
-        // if button is clicked, close the custom dialog
-        dialogButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-
-
-        // dialog.show();
-        */
     }
+
 }
