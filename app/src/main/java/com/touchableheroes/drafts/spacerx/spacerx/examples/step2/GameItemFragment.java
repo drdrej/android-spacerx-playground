@@ -13,12 +13,10 @@ import android.view.ViewGroup;
 import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
-import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
-import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
+import com.touchableheroes.drafts.spacerx.action.impl.SetValue;
 import com.touchableheroes.drafts.spacerx.dom.listener.DOMChangeListener;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
-import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.actions.SetValueStateAction;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
@@ -143,7 +141,7 @@ public class GameItemFragment
                                 GameEntityProjection.class);
 
                         binder.syntheticDom().actions()
-                                .exec( new SetValueStateAction(
+                                .exec( new SetValue(
                                         Step2AppStateKey.GAMEZ,
                                         cursorList) );
                     }

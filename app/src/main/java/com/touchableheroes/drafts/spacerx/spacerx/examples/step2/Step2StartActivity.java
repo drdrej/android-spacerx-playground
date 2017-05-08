@@ -11,7 +11,7 @@ import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBased
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
 import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
-import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
+import com.touchableheroes.drafts.spacerx.action.impl.RemoveValue;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
@@ -19,6 +19,7 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyCont
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
 import com.touchableheroes.drafts.spacerx.tx.StateTX;
+import com.touchableheroes.drafts.spacerx.ui.DialogUtil;
 import com.touchableheroes.drafts.spacerx.ui.binding.ActivityBinder;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.ui.binding.action.UIAction;
@@ -48,10 +49,12 @@ public class Step2StartActivity extends AppCompatActivity {
                             public void action( final View view ) {
                                 System.err.println( "Add Game !" );
 
-                                DialogUtil.create( Step2StartActivity.this )
-                                        .title( "Test Dialog" )
-                                        .view(R.layout.dialog_game_new)
-                                .show();
+                                DialogUtil.create(
+                                        AddGameDialogBinder.class,
+                                        Step2StartActivity.this
+                                ).title( "Test Dialog" )
+                                 .view(R.layout.dialog_game_new)
+                                 .show();;
                             }
                         });
 

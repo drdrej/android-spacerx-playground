@@ -4,7 +4,7 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.view.View;
 
-import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
+import com.touchableheroes.drafts.spacerx.action.impl.IncValue;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
 import com.touchableheroes.drafts.spacerx.ui.binding.FragmentBinder;
@@ -49,7 +49,7 @@ public class ExampleFragmentBinder
 
                         final SyntheticDOM synth = syntheticDom();
                         synth.actions()
-                             .exec( new IncValueStateAction(ExampleAppStateKey.COUNTER) );
+                             .exec( new IncValue(ExampleAppStateKey.COUNTER) );
                     }
                 });
     }
