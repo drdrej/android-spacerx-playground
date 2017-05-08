@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBasedDeleteCommand;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
 import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
@@ -51,6 +52,22 @@ public class Step2StartActivity extends AppCompatActivity {
                                         .title( "Test Dialog" )
                                         .view(R.layout.dialog_game_new)
                                 .show();
+                            }
+                        });
+
+
+
+                bind(R.id.input_btn_delete_all_games)
+                        .click(new UIAction() {
+                            @Override
+                            public void action(View view) {
+                                final Uri uri = ContractUriUtil.createDelete(ContentProviderApiContract.All_GAMEZ);
+                                final int deleted = getContentResolver().delete(uri, null, null);
+                                System.err.println(">>> deleted elements: " + deleted);
+
+                                syntheticDom()
+                                        .actions()
+                                        .exec(new RemoveValue(Step2AppStateKey.GAMEZ));
                             }
                         });
             }

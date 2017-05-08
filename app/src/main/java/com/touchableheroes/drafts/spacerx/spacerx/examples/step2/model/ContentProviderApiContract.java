@@ -1,9 +1,11 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model;
 
+import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBasedDeleteCommand;
 import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBasedInsertCommand;
 import com.touchableheroes.drafts.db.cupboard.xt.commands.cupboard.CupboardBasedQueryQueryCommand;
 import com.touchableheroes.drafts.db.cupboard.xt.commands.raw.RawQueryQueryCommand;
 import com.touchableheroes.drafts.db.cupboard.xt.contracts.DbContract;
+import com.touchableheroes.drafts.db.cupboard.xt.contracts.DeleteContract;
 import com.touchableheroes.drafts.db.cupboard.xt.contracts.InsertContract;
 import com.touchableheroes.drafts.db.cupboard.xt.contracts.QueryContract;
 import com.touchableheroes.drafts.db.cupboard.xt.contracts.UriMatcherContract;
@@ -25,6 +27,10 @@ public enum ContentProviderApiContract {
                     query = @QueryContract(
                             command = CupboardBasedQueryQueryCommand.class,
                             entity = GameEntity.class
+                    ),
+                    delete = @DeleteContract(
+                            entity = GameEntity.class,
+                            command = CupboardBasedDeleteCommand.class
                     )
             )
     )

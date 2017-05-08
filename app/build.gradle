@@ -36,7 +36,7 @@ dependencies {
     compile 'com.github.drdrej:drafts-core:011965b296' //-SNAPSHOT'
 
     //compile 'com.github.drdrej:drafts-db-cupboard:0.0.18'
-    compile 'com.github.drdrej:drafts-db-cupboard:f857bd7069' // -SNAPSHOT
+    compile 'com.github.drdrej:drafts-db-cupboard:-SNAPSHOT' // f857bd7069
 
     // compile 'com.github.drdrej:drafts-spacerx:0.0.2'
     compile 'com.github.drdrej:drafts-spacerx:6145663634' // bd683501aa' //-SNAPSHOT'

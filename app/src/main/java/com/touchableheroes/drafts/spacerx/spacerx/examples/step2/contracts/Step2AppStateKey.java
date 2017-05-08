@@ -5,13 +5,15 @@ package com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts;
  */
 
 public enum Step2AppStateKey {
-
+/*
     COUNTER,
 
     FORMATTED_COUNTER,
 
     LOADER_ALL_GAMEZ_COUNT,
+    , USERS
+    */
 
-    GAMEZ, USERS
+    GAMEZ
 
 }
