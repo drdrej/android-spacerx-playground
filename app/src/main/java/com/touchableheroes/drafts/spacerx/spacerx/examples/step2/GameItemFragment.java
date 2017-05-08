@@ -23,8 +23,8 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntityProjection;
 import com.touchableheroes.drafts.spacerx.tx.Remove;
-import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
-import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
+import com.touchableheroes.drafts.spacerx.ui.binding.FragmentBinder;
+import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;
 
 import java.io.Serializable;
 import java.util.Map;

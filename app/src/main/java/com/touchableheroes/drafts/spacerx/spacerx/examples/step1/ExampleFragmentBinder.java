@@ -7,11 +7,10 @@ import android.view.View;
 import com.touchableheroes.drafts.spacerx.action.impl.IncValueStateAction;
 import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.dom.SyntheticDOM;
-import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
-import com.touchableheroes.drafts.spacerx.ui.UIAction;
-import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
+import com.touchableheroes.drafts.spacerx.ui.binding.FragmentBinder;
+import com.touchableheroes.drafts.spacerx.ui.binding.action.UIAction;
+import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.ui.FragmentBinder;
 
 import java.io.Serializable;
 

@@ -39,7 +39,7 @@ dependencies {
     compile 'com.github.drdrej:drafts-db-cupboard:f857bd7069' // -SNAPSHOT
 
     // compile 'com.github.drdrej:drafts-spacerx:0.0.2'
-    compile 'com.github.drdrej:drafts-spacerx:bd683501aa' //-SNAPSHOT'
+    compile 'com.github.drdrej:drafts-spacerx:6145663634' // bd683501aa' //-SNAPSHOT'
 
     // compile 'com.google.android.gms:play-services-maps:8.4.0'
     // compile 'com.avast:android-styled-dialogs:2.3.3'

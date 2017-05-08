@@ -18,10 +18,10 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.dummy.DummyCont
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.model.entity.GameEntity;
 import com.touchableheroes.drafts.spacerx.tx.StateTX;
-import com.touchableheroes.drafts.spacerx.ui.ActivityBinder;
+import com.touchableheroes.drafts.spacerx.ui.binding.ActivityBinder;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
-import com.touchableheroes.drafts.spacerx.ui.UIAction;
-import com.touchableheroes.drafts.spacerx.ui.UIUpdater;
+import com.touchableheroes.drafts.spacerx.ui.binding.action.UIAction;
+import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,23 +40,6 @@ public class Step2StartActivity extends AppCompatActivity {
 
             @Override
             public void bind() {
-                /*
-                getter(ExampleAppStateKey.FORMATTED_COUNTER,
-                        new Getter<String>( syntheticDom() ) {
-
-                            public String get() {
-                                final Serializable realVal = syntheticDom().get(ExampleAppStateKey.COUNTER);
-                                return String.valueOf( realVal );
-                            }
-                        });
-                */
-
-                /*
-                bind(R.id.ExampleTextView)
-                        .value( ExampleAppStateKey.FORMATTED_COUNTER )
-                        .updater( new UIUpdater.TextViewUIUpdater() );
-                */
-
                 bind(R.id.btn_add_game)
                         .click( new UIAction() {
 
@@ -66,42 +49,20 @@ public class Step2StartActivity extends AppCompatActivity {
 
                                 DialogUtil.create( Step2StartActivity.this )
                                         .title( "Test Dialog" )
+                                        .view(R.layout.dialog_game_new)
+                                        .on()
                                 .show();
-
-
-                                final Uri insertUri = ContractUriUtil.createInsert(ContentProviderApiContract.All_GAMEZ);
-
-                                final GameEntity entity = new GameEntity();
-                                entity._id = System.currentTimeMillis();
-                                entity.name = "TEST_ENTRY";
-
-                                final ContentValues xyz = ContentValuesUtil.entityToContentValues( entity );
-                                final Uri insertedUri = getContentResolver().insert(insertUri, xyz);
-
-                                System.err.println( ">>> inserted uri: " + insertedUri );
-
-                                syntheticDom().actions().exec(new AbstractStateAction() {
-
-                                    @Override
-                                    public void exec(StateTX tx) {
-                                        tx.remove(Step2AppStateKey.GAMEZ);
-                                    }
-
-                                });
                             }
                         });
             }
         };
 
         binder.bind();
-
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         binder.destroy();
     }
 }
