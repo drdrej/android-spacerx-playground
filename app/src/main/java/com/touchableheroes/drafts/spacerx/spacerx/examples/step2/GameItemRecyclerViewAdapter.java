@@ -75,6 +75,7 @@ public class GameItemRecyclerViewAdapter
 
         System.err.println( ">>> ID: " + id + " -> " + name );
         holder.mView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
             // bind space

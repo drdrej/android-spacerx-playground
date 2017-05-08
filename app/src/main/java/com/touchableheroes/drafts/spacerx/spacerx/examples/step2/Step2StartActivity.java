@@ -1,5 +1,6 @@
 package com.touchableheroes.drafts.spacerx.spacerx.examples.step2;
 
+import android.app.Dialog;
 import android.content.ContentValues;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -62,6 +63,11 @@ public class Step2StartActivity extends AppCompatActivity {
                             @Override
                             public void action( final View view ) {
                                 System.err.println( "Add Game !" );
+
+                                DialogUtil.create( Step2StartActivity.this )
+                                        .title( "Test Dialog" )
+                                .show();
+
 
                                 final Uri insertUri = ContractUriUtil.createInsert(ContentProviderApiContract.All_GAMEZ);
 
