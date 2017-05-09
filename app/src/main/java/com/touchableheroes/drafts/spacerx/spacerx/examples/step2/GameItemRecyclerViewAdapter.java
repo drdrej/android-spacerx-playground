@@ -13,6 +13,7 @@ import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.defaults.NoDataCursor;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.projections.GameEntityProjection;
+import com.touchableheroes.drafts.spacerx.ui.binding.AbstractUIBinder;
 
 /**
  *
@@ -21,6 +22,8 @@ public class GameItemRecyclerViewAdapter
        extends RecyclerView.Adapter<GameItemRecyclerViewAdapter.ViewHolder> {
 
     private ConverterCursorList<GameEntityProjection> mValues;
+
+//g    private AbstractUIBinder binder = new Ab
 
     public GameItemRecyclerViewAdapter() {
         mValues = new ConverterCursorList<GameEntityProjection>( new NoDataCursor(), GameEntityProjection.class );

@@ -33,6 +33,16 @@ public enum ContentProviderApiContract {
                     )
             )
     )
-    All_GAMEZ
+    All_GAMEZ,
 
+    @UriMatcherContract(
+            operations = @UriOperation(
+                    delete = @DeleteContract(
+                            entity = GameEntity.class,
+                            command = CupboardBasedDeleteCommand.class,
+                            selection = "_id = ?" // better named ?ID
+                    )
+            )
+    )
+    DEL_GAME_BY_ID
 }

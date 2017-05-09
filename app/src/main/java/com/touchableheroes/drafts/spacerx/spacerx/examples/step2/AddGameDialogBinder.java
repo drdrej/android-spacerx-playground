@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContentValuesUtil;
 import com.touchableheroes.drafts.db.cupboard.xt.util.ContractUriUtil;
 import com.touchableheroes.drafts.spacerx.action.AbstractStateAction;
+import com.touchableheroes.drafts.spacerx.dom.values.Getter;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract;
@@ -17,6 +18,8 @@ import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.entit
 import com.touchableheroes.drafts.spacerx.tx.StateTX;
 import com.touchableheroes.drafts.spacerx.ui.binding.DialogBinder;
 import com.touchableheroes.drafts.spacerx.ui.binding.action.UIAction;
+
+import java.io.Serializable;
 
 /**
  * Created by asiebert on 08.05.2017.
@@ -46,6 +49,16 @@ public class AddGameDialogBinder extends DialogBinder {
                         final EditText textView = (EditText) owner()
                                                         .findViewById(R.id.input_txt_game_name);
 
+
+                        // TODO: INPUT-Value:binding. evtl. ueber getter?
+                        final Getter g = new Getter(syntheticDom()) {
+
+                            @Override
+                            public Serializable get() {
+                                return null;
+                            }
+                        };
+
                         final GameEntity entity = new GameEntity();
                         entity._id = System.currentTimeMillis();
                         entity.name = textView.getText().toString();
@@ -64,6 +77,7 @@ public class AddGameDialogBinder extends DialogBinder {
 
                         owner().dismiss();
                     }
+
                 });
 
     }
