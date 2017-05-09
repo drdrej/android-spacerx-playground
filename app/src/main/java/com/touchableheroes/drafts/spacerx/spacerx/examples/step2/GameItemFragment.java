@@ -69,12 +69,10 @@ public class GameItemFragment
                 this.getContext(),
                 ContentProviderApiContract.class );
 
-        final String[] args = null;
-
         loaderMgr.load(
                 new ContractLoaderCallback(
                         ContentProviderApiContract.All_GAMEZ,
-                        args) {
+                        null) {
 
                     @Override
                     public void onLoadFinished(
