@@ -14,18 +14,11 @@ import com.touchableheroes.drafts.db.cupboard.xt.cursor.ConverterCursorList;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.ContractLoaderCallback;
 import com.touchableheroes.drafts.db.cupboard.xt.loader.impl.SimpleContractLoader;
 import com.touchableheroes.drafts.spacerx.action.impl.SetValue;
-import com.touchableheroes.drafts.spacerx.dom.listener.DOMChangeListener;
 import com.touchableheroes.drafts.spacerx.spacerx.R;
 
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.Step2AppStateKey;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.projections.GameEntityProjection;
-import com.touchableheroes.drafts.spacerx.tx.Remove;
-import com.touchableheroes.drafts.spacerx.ui.binding.FragmentBinder;
-import com.touchableheroes.drafts.spacerx.ui.binding.action.UIUpdater;
-
-import java.io.Serializable;
-import java.util.Map;
 
 /**
  *
@@ -33,62 +26,17 @@ import java.util.Map;
 public class GameItemFragment
        extends Fragment {
 
-    private final Binder binder;
+    private final GameItemFragementBinder binder;
 
     public final GameItemRecyclerViewAdapter adapter;
 
     public SimpleContractLoader loaderMgr;
 
 
-   public static class Binder
-           extends FragmentBinder {
-
-        public Binder(final Fragment src) {
-            super(src);
-        }
-
-        @Override
-        public void bind() {
-
-            bind(R.id.gamez_list)
-                    .value( Step2AppStateKey.GAMEZ )
-                    .updater(new UIUpdater() {
-
-                        @Override
-                        public void update(final View view,
-                                           final Serializable data) {
-                            // updateListData( (Cursor) data );
-
-                            if( data != null
-                                && !(data instanceof Remove)) {
-                                ((GameItemFragment) owner()).adapter.updateData( (ConverterCursorList<GameEntityProjection>) data );
-                            }
-                        }
-                    });
-
-            onChange( Step2AppStateKey.GAMEZ )
-                    .ifOneOf(new DOMChangeListener() {
-
-                        @Override
-                        public void changed(final Map<Enum, Serializable> map) {
-                            final Serializable gamez = map.get(Step2AppStateKey.GAMEZ);
-
-                            if( gamez instanceof Remove ) {
-                                ((GameItemFragment) owner()).loaderMgr.reload( ContentProviderApiContract.All_GAMEZ );
-                            }
-                        }
-                    });
-        }
-
-        @Override
-        public void init(final Context context) {
-            ;
-        }
-    };
 
     public GameItemFragment() {
         adapter = new GameItemRecyclerViewAdapter();
-        binder = new Binder(this);
+        binder = new GameItemFragementBinder(this);
     }
 
     @Override
