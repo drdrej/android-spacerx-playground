@@ -12,7 +12,6 @@ import com.touchableheroes.drafts.db.cupboard.xt.contracts.UriOperation;
 import com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.entities.GameEntity;
 
 @DbContract(
-        name = "com.touchableheroes.drafts.spacerx.spacerx.examples.step2.contracts.provider.ContentProviderApiContract",
         version = 1,
         entities = {GameEntity.class})
 public enum ContentProviderApiContract {
